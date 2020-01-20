@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SystemJS Basic - Import Maps</title>
+</head>
+<body>
+    <h1>SystemJS basics with import map</h1>
+
+    <script type="systemjs-importmap">
+        {
+            "imports": {
+                "some-module": "./some-module.js"
+            }
+        }
+    </script>
+    <!-- load a locally hosted module -->
+    <script type="systemjs-module" src="import:some-module"></script>
+     <!-- load SystemJS itself from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/system.js"></script>
+
+    <script>
+        System.import('some-module').then(function(smMod) {
+            console.log('importing smMod')
+            smMod.moduleHello()
+        })
+    </script>
+</body>
+</html>
